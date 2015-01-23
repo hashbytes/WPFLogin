@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="TextBox">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                Value="{Binding RelativeSource={RelativeSource Self}, 
+                       Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Width" Value="200"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+    </Style>
+    <Style TargetType="PasswordBox">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                Value="{Binding RelativeSource={RelativeSource Self}, 
+                       Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Width" Value="200"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextEntryLabel">
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Margin" Value="0,5,5,5"></Setter>
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="5,3"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Width" Value="50"></Setter>
+    </Style>
+    <Style TargetType="Window" x:Key="WindowFadeColor">
+        <Style.Triggers>
+            <DataTrigger Value="true" Binding="{Binding FailedLoginAttempt, Mode=OneWay}" >
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(Window.Background).(SolidColorBrush.Color)" 
+                                                FillBehavior="HoldEnd" 
+                                                Duration="0:0:1" From="#00EE0000" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
